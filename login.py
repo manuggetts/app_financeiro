@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtWidgets import QLineEdit, QPushButton
 from PyQt5.QtCore import pyqtSignal, Qt
 from animated_button import AnimatedButton
+from PyQt5.QtGui import QIcon
 from sys import argv, exit
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -12,6 +13,8 @@ class LoginWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(LoginWindow, self).__init__()
         uic.loadUi('design1.ui', self)
+
+        self.setWindowIcon(QIcon(':/img/favico.png'))
 
         self.Username = self.findChild(QLineEdit, 'Username')
         self.Password = self.findChild(QLineEdit, 'Password')
