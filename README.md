@@ -33,7 +33,7 @@ python app.py
 
 Ao iniciar o aplicativo, você será apresentado a uma janela de login. Após o login bem-sucedido, você será levado à janela principal do aplicativo.
 
-Na janela principal, você pode adicionar itens de receita ou despesa inserindo a descrição e o valor no campo fornecido e clicando no botão "Adicionar". Você pode selecionar se o item é uma receita ou despesa usando os botões de opção fornecidos.
+Na janela principal, você pode adicionar itens de receita ou despesa inserindo a descrição e o valor no campo fornecido e clicando no botão "Adicionar". Você pode selecionar se o item é uma receita (entrada) ou despesa (saída) usando os botões de opção fornecidos.
 
 ---
 ## 🗺️ Roadmap
