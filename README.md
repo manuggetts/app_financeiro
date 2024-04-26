@@ -17,11 +17,11 @@ Este projeto requer Python 3.8 e PyQt5.
 
 1. Clone o repositório:
 ```
-git clone https://github.com/seuusuario/seuprojeto.git
+git clone https://github.com/manuggetts/app_financeiro.git
 ```
 2. Instale as dependências:
 ```
-pip install -r requirements.txt
+pip install PyQt5 pyqt5-tools
 ```
 3. Para iniciar o aplicativo, execute:
 ```
