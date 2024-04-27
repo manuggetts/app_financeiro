@@ -1,24 +1,25 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtWidgets import QLineEdit, QRadioButton, QLabel, QTableWidget
 from PyQt5.QtGui import QIcon
 from animated_button import AnimatedButton
 from sys import argv, exit
 from login import LoginWindow
-import design1_qrc
+import resources
 
 class ControleFinanceiro(QtWidgets.QMainWindow):
-
     def __init__(self):
         super(ControleFinanceiro, self).__init__()
         uic.loadUi('design2.ui', self)
-    
-        self.setWindowIcon(QIcon(':/img/favico.png'))
 
+        self.setWindowIcon(QIcon(':/img/favico.png')) # FavIco
+
+        # Inicialização de variáveis
         self.linha = 0
         self.valor_entrou = 0
         self.valor_saiu = 0
         self.valor_total = 0
 
+        # Encontrando widgets
         self.lineEdit = self.findChild(QLineEdit, 'lineEdit')
         self.lineEdit_2 = self.findChild(QLineEdit, 'lineEdit_2')
         self.Entrada = self.findChild(QRadioButton, 'Entrada')
@@ -29,8 +30,15 @@ class ControleFinanceiro(QtWidgets.QMainWindow):
         self.btt_total = self.findChild(QLabel, 'btt_total')
         self.tableWidget = self.findChild(QTableWidget, 'tableWidget')
 
+        # Configuração da tabela
+        self.tableWidget.setColumnCount(5)
+        nomes_colunas = ['Descrição', 'Valor', 'Tipo', 'Data', 'Hora']
+        self.tableWidget.setHorizontalHeaderLabels(nomes_colunas)
+
+        # Botão "Adicionar"
         self.pushButton.clicked.connect(self.adicionar_item)
 
+    # Lógica para adicionar itens à tabela
     def adicionar_item(self):
         descricao = self.lineEdit.text()
         valor_texto = self.lineEdit_2.text().replace(',', '.')
@@ -60,28 +68,44 @@ class ControleFinanceiro(QtWidgets.QMainWindow):
         self.btt_saida.setText('R$ {:,.2f}'.format(self.valor_saiu))
         self.btt_total.setText('R$ {:,.2f}'.format(self.valor_total))
 
-        self.tableWidget.setRowCount(self.linha+1)
-        self.tableWidget.setColumnCount(3)
-        self.tableWidget.setItem(self.linha,0,QtWidgets.QTableWidgetItem(f'{descricao}'))
-        self.tableWidget.setItem(self.linha,1,QtWidgets.QTableWidgetItem('R$ {:,.2f}'.format(valor)))
-        self.tableWidget.setItem(self.linha,2,QtWidgets.QTableWidgetItem(f'{tipo}'))
-        self.linha += 1
+        current_datetime = QtCore.QDateTime.currentDateTime()
+        data_str = current_datetime.toString("dd/MM/yy")
+        hora_str = current_datetime.toString("hh:mm:ss")
+
+        row_position = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(row_position)
+        
+        item_descricao = QtWidgets.QTableWidgetItem(descricao)
+        item_valor = QtWidgets.QTableWidgetItem('R$ {:,.2f}'.format(valor))
+        item_tipo = QtWidgets.QTableWidgetItem(tipo)
+        
+        item_data = QtWidgets.QTableWidgetItem(data_str)
+        item_hora = QtWidgets.QTableWidgetItem(hora_str)
+        
+        items_list = [item_descricao, item_valor, item_tipo, item_data, item_hora]
+        
+        for col, item in enumerate(items_list):
+            item.setTextAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
+            item.setTextAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
+            
+            self.tableWidget.setItem(row_position, col, item)
 
         self.lineEdit.clear()
         self.lineEdit_2.clear()
 
+# Abrir janela principal
 app = QtWidgets.QApplication(argv)
 login_window = LoginWindow()
 
 def open_main_window():
     print("Abrindo a janela principal...")
     try:
-        login_window.main_window = ControleFinanceiro()
-        login_window.main_window.show()
-        print("Janela principal aberta com sucesso!")
-        login_window.close()
+      login_window.main_window = ControleFinanceiro()
+      login_window.main_window.show()
+      print("Janela principal aberta com sucesso!")
+      login_window.close()
     except Exception as e:
-        print("Erro ao abrir a janela principal:", e)
+      print("Erro ao abrir a janela principal:", e)
 
 login_window.login_success.connect(open_main_window)
 login_window.show()

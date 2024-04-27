@@ -2,7 +2,6 @@
   <qresource prefix="/">
     <file>img/username.png</file>
     <file>img/senha.png</file>
-    <file>img/tela_branca.jpg</file>
     <file>img/favico.png</file>
     <file>img/pag1.png</file>
     <file>img/pag2.png</file>

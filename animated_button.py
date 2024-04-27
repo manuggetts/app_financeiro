@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QPushButton, QApplication
-from PyQt5.QtCore import QPropertyAnimation, Qt, pyqtProperty, QEasingCurve, QRect
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtCore import QPropertyAnimation, pyqtProperty, QEasingCurve, QRect
 from PyQt5.QtGui import QPalette, QColor
 
 class AnimatedButton(QPushButton):
