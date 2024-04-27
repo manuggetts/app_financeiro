@@ -37,6 +37,9 @@ class ControleFinanceiro(QtWidgets.QMainWindow):
 
         try:
             valor = float(valor_texto)
+            if valor <= 0:
+                print("O valor deve ser positivo.")
+                return
         except ValueError:
             print(f"Não foi possível converter '{valor_texto}' em um número.")
             return
