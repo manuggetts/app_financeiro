@@ -3,7 +3,7 @@
 O Controle Financeiro é um aplicativo de desktop desenvolvido em Python e PyQt5, projetado para auxiliar os usuários no acompanhamento de suas receitas e despesas. Com ele, os usuários podem inserir detalhes de receitas e despesas, que são organizados e exibidos em uma tabela para uma visualização clara e conveniente.
 
 <div align=center>
-<img src="https://github.com/manuggetts/app_financeiro/assets/141872152/48b02387-c944-487c-aaa1-f6426284f44a">
+<img src="https://raw.githubusercontent.com/manuggetts/app_financeiro/main/gif/demo.gif">
 </div>
 
 ---
