@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets, uic, QtCore
-from PyQt5.QtWidgets import QLineEdit, QPushButton
-from PyQt5.QtCore import pyqtSignal, Qt
+from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtCore import pyqtSignal
 from animated_button import AnimatedButton
 from PyQt5.QtGui import QIcon
-from sys import argv, exit
+from sys import exit
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 

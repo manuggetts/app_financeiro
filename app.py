@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, uic, QtCore
+from PyQt5 import QtWidgets, uic, QtCore, QtGui
 from PyQt5.QtWidgets import QLineEdit, QRadioButton, QLabel, QTableWidget
 from PyQt5.QtGui import QIcon
 from animated_button import AnimatedButton
@@ -11,15 +11,12 @@ class ControleFinanceiro(QtWidgets.QMainWindow):
         super(ControleFinanceiro, self).__init__()
         uic.loadUi('design2.ui', self)
 
-        self.setWindowIcon(QIcon(':/img/favico.png')) # FavIco
+        self.setWindowIcon(QIcon(':/img/favico.png'))
 
-        # Inicialização de variáveis
-        self.linha = 0
         self.valor_entrou = 0
         self.valor_saiu = 0
         self.valor_total = 0
 
-        # Encontrando widgets
         self.lineEdit = self.findChild(QLineEdit, 'lineEdit')
         self.lineEdit_2 = self.findChild(QLineEdit, 'lineEdit_2')
         self.Entrada = self.findChild(QRadioButton, 'Entrada')
@@ -30,15 +27,16 @@ class ControleFinanceiro(QtWidgets.QMainWindow):
         self.btt_total = self.findChild(QLabel, 'btt_total')
         self.tableWidget = self.findChild(QTableWidget, 'tableWidget')
 
-        # Configuração da tabela
-        self.tableWidget.setColumnCount(5)
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.tableWidget.horizontalHeader().setFont(font)
+
         nomes_colunas = ['Descrição', 'Valor', 'Tipo', 'Data', 'Hora']
+        self.tableWidget.setColumnCount(len(nomes_colunas))
         self.tableWidget.setHorizontalHeaderLabels(nomes_colunas)
 
-        # Botão "Adicionar"
         self.pushButton.clicked.connect(self.adicionar_item)
 
-    # Lógica para adicionar itens à tabela
     def adicionar_item(self):
         descricao = self.lineEdit.text()
         valor_texto = self.lineEdit_2.text().replace(',', '.')
@@ -75,25 +73,21 @@ class ControleFinanceiro(QtWidgets.QMainWindow):
         row_position = self.tableWidget.rowCount()
         self.tableWidget.insertRow(row_position)
         
-        item_descricao = QtWidgets.QTableWidgetItem(descricao)
-        item_valor = QtWidgets.QTableWidgetItem('R$ {:,.2f}'.format(valor))
-        item_tipo = QtWidgets.QTableWidgetItem(tipo)
-        
-        item_data = QtWidgets.QTableWidgetItem(data_str)
-        item_hora = QtWidgets.QTableWidgetItem(hora_str)
-        
-        items_list = [item_descricao, item_valor, item_tipo, item_data, item_hora]
+        items_list = [
+            QtWidgets.QTableWidgetItem(descricao),
+            QtWidgets.QTableWidgetItem('R$ {:,.2f}'.format(valor)),
+            QtWidgets.QTableWidgetItem(tipo),
+            QtWidgets.QTableWidgetItem(data_str),
+            QtWidgets.QTableWidgetItem(hora_str)
+        ]
         
         for col, item in enumerate(items_list):
             item.setTextAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
-            item.setTextAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignVCenter)
-            
             self.tableWidget.setItem(row_position, col, item)
 
         self.lineEdit.clear()
         self.lineEdit_2.clear()
-
-# Abrir janela principal
+        
 app = QtWidgets.QApplication(argv)
 login_window = LoginWindow()
 

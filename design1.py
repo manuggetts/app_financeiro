@@ -35,7 +35,7 @@ class Ui_Inicio(object):
         self.Login = AnimatedButton(self.widget)
         self.Login.setGeometry(QtCore.QRect(360, 400, 91, 31))
         self.Login.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.Login.setStyleSheet("")
+        self.Login.setStyleSheet("AnimatedButton:focus {outline: none;}")
         self.Login.setObjectName("Login")
         self.widget_2 = QtWidgets.QWidget(self.widget)
         self.widget_2.setGeometry(QtCore.QRect(270, 320, 31, 31))

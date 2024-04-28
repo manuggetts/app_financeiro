@@ -14,11 +14,13 @@ class Ui_Inicio(object):
         self.widget.setObjectName("widget")
         self.tableWidget = QtWidgets.QTableWidget(self.widget)
         self.tableWidget.setGeometry(QtCore.QRect(55, 420, 691, 131))
-        self.tableWidget.setStyleSheet("QTableWidget {\n"
-"background: none;\n"
-"background-color: #fff;\n"
-"border-radius: 15;\n"
-"}")
+        self.tableWidget.setStyleSheet("""
+        QTableWidget {
+                background: none;
+                background-color: #fff;
+                border-radius: 15;
+                selection-background-color: transparent;
+        }""")
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
@@ -101,37 +103,39 @@ class Ui_Inicio(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.Entrada.setFont(font)
-        self.Entrada.setStyleSheet("background: none;\n"
-"border-radius: 15;")
+        self.Entrada.setStyleSheet("""
+        QRadioButton {
+                background: none;
+                border-radius: 15;
+        }
+
+        QRadioButton:focus {
+                outline: none;
+        }
+        """)
         self.Entrada.setObjectName("Entrada")
         self.Saida = QtWidgets.QRadioButton(self.widget)
         self.Saida.setGeometry(QtCore.QRect(480, 270, 81, 21))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.Saida.setFont(font)
-        self.Saida.setStyleSheet("background: none;\n"
-"border-radius: 15;")
+        self.Saida.setStyleSheet("""
+        QRadioButton {
+                background: none;
+                border-radius: 15;
+        }
+
+        QRadioButton:focus {
+                outline: none;
+        }
+        """)
         self.Saida.setObjectName("Saida")
         self.pushButton = AnimatedButton(self.widget)
         self.pushButton.setGeometry(QtCore.QRect(590, 230, 131, 61))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("\n"
-"            AnimatedButton {\n"
-"                border-radius: 15px;\n"
-"                background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,\n"
-"                                                stop:0 #ff8c00, stop:0.5 #ffa500, stop:1 #ffbf00);\n"
-"                border: none;\n"
-"                font: bold;\n"
-"                color: #fff;  /* Cor da fonte branca */\n"
-"            }\n"
-"\n"
-"            AnimatedButton:hover {\n"
-"                background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0,\n"
-"                                                stop:0 #ffbf00, stop:0.5 #ffa500, stop:1 #ff8c00);\n"
-"            }\n"
-"        ")
+        self.pushButton.setStyleSheet()
         self.pushButton.setObjectName("pushButton")
         self.frame = QtWidgets.QFrame(self.widget)
         self.frame.setGeometry(QtCore.QRect(0, -10, 811, 601))
