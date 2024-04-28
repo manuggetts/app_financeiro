@@ -4,7 +4,7 @@ APP de Controle Financeiro é um aplicativo de desktop desenvolvido com PyQt5 pa
 O aplicativo permite que os usuários insiram itens de receita e despesa, que são então exibidos em uma tabela para fácil visualização.
 
 <div align=center>
-<img src="https://github.com/manuggetts/app_financeiro/assets/141872152/c3ceb264-aad6-47c7-8f68-a9c2dd33aabf">
+<img src="https://github.com/manuggetts/app_financeiro/assets/141872152/b0f160b5-13da-4315-8761-dd30b0733997">
 </div>
 
 ---
